@@ -1,0 +1,4 @@
+devices: []
+mqtt:
+  host: localhost
+  topic_prefix: 'chromecast'
