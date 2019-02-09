@@ -22,7 +22,7 @@
   "homepage": "https://github.com/denwilliams/chromecast-mqtt-monitor#readme",
   "dependencies": {
     "@loke/config": "^3.0.0",
-    "castv2-device-monitor": "^1.2.4",
-    "mqtt": "^2.15.1"
+    "castv2-device-monitor": "^1.3.2",
+    "mqtt": "^2.18.8"
   }
 }
