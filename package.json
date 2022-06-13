@@ -1,6 +1,6 @@
 {
   "name": "chromecast-mqtt-monitor",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Monitors one or more Chromecasts and publishes activity to MQTT",
   "main": "lib/index.js",
   "scripts": {
@@ -23,6 +23,6 @@
   "dependencies": {
     "castv2-device-monitor": "^1.3.2",
     "mqtt-usvc": "^3.0.5",
-    "prom-client": "^14.0.1"
+    "prom-client": "^12.0.0"
   }
 }
