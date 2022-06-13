@@ -23,6 +23,8 @@ service:
 
 The device `id` is included in the MQTT topic path. The device `name` is used to discover the Chromecast on the local network.
 
+You need to specify which Chromecast devices to monitor (by name). It won't automatically monitor them for you.
+
 ## Launching
 
 It is intended this be installed globally and then run with a config file provided, eg:
@@ -33,6 +35,12 @@ CONFIG_FILE=/path/to/config.yml chromecast-mqtt-monitor
 ```
 
 If launching with systemd or similar make sure the config file env var is included.
+
+If running on Raspbian you will need:
+
+```
+sudo apt-get install libavahi-compat-libdnssd-dev
+```
 
 ## MQTT Events Emitted
 
