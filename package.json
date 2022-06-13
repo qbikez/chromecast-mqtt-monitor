@@ -1,6 +1,6 @@
 {
   "name": "chromecast-mqtt-monitor",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Monitors one or more Chromecasts and publishes activity to MQTT",
   "main": "lib/index.js",
   "scripts": {

@@ -1,6 +1,8 @@
 # chromecast-mqtt-monitor
 Monitors one or more Chromecasts and publishes activity to MQTT
 
+NOTE: this seems to be very unreliable on Raspbian and stops receiving updates after a few minutes. On macOs it seems stable. Haven't been able to figure out why, seems to be related to dependencies. Will try switching to something different and see if that improves things.
+
 ## Breaking Changes
 
 v2.0.0 now uses mqtt-usvc, thus the way in which config is handled has changed.
