@@ -1,6 +1,6 @@
 {
   "name": "chromecast-mqtt-monitor",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Monitors one or more Chromecasts and publishes activity to MQTT",
   "main": "lib/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "chromecast-mqtt-monitor": "./bin/chromecast-mqtt-monitor"
+    "chromecast-mqtt-monitor": "./main.js"
   },
   "repository": {
     "type": "git",
@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/denwilliams/chromecast-mqtt-monitor#readme",
   "dependencies": {
-    "@loke/config": "^3.0.0",
     "castv2-device-monitor": "^1.3.2",
-    "mqtt": "^2.18.8"
+    "mqtt-usvc": "^3.0.5",
+    "prom-client": "^14.0.1"
   }
 }

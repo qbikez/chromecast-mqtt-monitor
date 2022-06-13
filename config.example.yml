@@ -1,0 +1,9 @@
+mqtt:
+  uri: "mqtt://localhost"
+  prefix: "chromecast"
+service:
+  devices:
+    - id: "living-room"
+      name: "Living Room Chromecast"
+    - id: "study"
+      name: "Study Chromecast"
