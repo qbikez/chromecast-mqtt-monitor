@@ -13,15 +13,7 @@ const EVENT_NAMES = [
 ];
 
 async function main() {
-  const service = await mqttusvc.create({
-    mqtt: {
-      uri: "mqtt://localhost",
-      prefix: "chromecast",
-    },
-    service: {
-      devices: [{ id: "living-room-speakers", name: "Living Room speakers" }],
-    },
-  });
+  const service = await mqttusvc.create();
 
   const { devices } = service.config;
   if (!devices || !devices.length) {
