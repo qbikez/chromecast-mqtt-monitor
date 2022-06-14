@@ -13,21 +13,12 @@ const EVENT_NAMES = [
   "repeatMode",
 ];
 
+interface ServiceConfig {
+  devices: Array<{ id: string; name: string }>;
+}
+
 async function main() {
-  const service = await createusvc({
-    mqtt: {
-      uri: "mqtt://localhost",
-      prefix: "chromecast",
-    },
-    service: {
-      devices: [
-        {
-          id: "living-room-speakers",
-          name: "Living Room speakers",
-        },
-      ],
-    },
-  });
+  const service = await createusvc<ServiceConfig>();
 
   const { devices } = service.config;
   if (!devices || !devices.length) {
