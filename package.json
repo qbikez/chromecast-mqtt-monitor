@@ -1,15 +1,16 @@
 {
   "name": "chromecast-mqtt-monitor",
-  "version": "3.0.0-beta-1",
+  "version": "3.0.0-beta-2",
   "description": "Monitors one or more Chromecasts and publishes activity to MQTT, also allows for play/pause/stop/volume control",
   "main": "dist/main.js",
   "scripts": {
     "build": "tsc",
+    "prepack": "chmod u+x dist/main.js",
     "start": "ts-node main.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "chromecast-mqtt-monitor": "./main.js"
+    "chromecast-mqtt-monitor": "./dist/main.js"
   },
   "repository": {
     "type": "git",
