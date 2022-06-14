@@ -14,7 +14,7 @@ const EVENT_NAMES = [
 ];
 
 interface ServiceConfig {
-  devices: Array<{ id: string; name: string }>;
+  devices: Array<{ id: string; name: string; ip?: string; port?: number }>;
 }
 
 async function main() {
@@ -29,7 +29,11 @@ async function main() {
   const deviceMap = devices.reduce<Record<string, Chromecast>>(
     (deviceMap, device) => {
       const chromecast = new Chromecast(
-        { chromecastDeviceName: device.name },
+        {
+          chromecastDeviceName: device.name,
+          chromecastIp: device.ip,
+          chromecastPort: device.port,
+        },
         console.log,
         () => {}
       );
