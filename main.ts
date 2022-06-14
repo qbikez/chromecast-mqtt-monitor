@@ -48,7 +48,6 @@ async function main() {
           err.message
         );
       });
-      // setTimeout(() => chromecast.setVolume(0.5), 2000);
 
       console.info("Loaded Chromecast id=%s name=%j", device.id, device.name);
 

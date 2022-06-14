@@ -32,6 +32,7 @@ export class Chromecast extends EventEmitter {
   private reconnectTimer: NodeJS.Timeout | null = null;
   private reconnectCounter: number | null = null;
   private chromecastClient: Client | null = null;
+  private dontDetectChromecast: boolean = false;
   // private mediaMetadata: null | {
   //   metadataType: 3;
   //   title: string;
@@ -44,6 +45,8 @@ export class Chromecast extends EventEmitter {
   constructor(
     config: {
       chromecastDeviceName: string;
+      chromecastIp?: string;
+      chromecastPort?: number;
     },
     private log = console.log,
     private debug = console.debug
@@ -54,7 +57,16 @@ export class Chromecast extends EventEmitter {
     this.chromecastDeviceName = config.chromecastDeviceName;
 
     this.setDefaultProperties(true);
-    this.detectChromecast();
+
+    this.chromecastIp = config.chromecastIp || null;
+    this.chromecastPort = config.chromecastPort || null;
+
+    if (this.chromecastIp && this.chromecastPort) {
+      this.dontDetectChromecast = true;
+      this.clientConnect();
+    } else {
+      this.detectChromecast();
+    }
   }
 
   private setDefaultProperties(
@@ -157,7 +169,7 @@ export class Chromecast extends EventEmitter {
     this.setDefaultProperties(false, true);
 
     if (reconnect) {
-      if ((this.reconnectCounter || 0) > 150) {
+      if (!this.dontDetectChromecast && (this.reconnectCounter || 0) > 150) {
         // Backoff after 5 minutes
         this.log(
           "Chromecast reconnection: backoff, searching again for Chromecast"
@@ -166,13 +178,13 @@ export class Chromecast extends EventEmitter {
         return;
       }
 
-      this.log("Waiting 2 seconds before reconnecting");
+      this.log(`Waiting before reconnecting`);
 
       if (this.reconnectTimer) clearTimeout(this.reconnectTimer);
       this.reconnectTimer = setTimeout(() => {
         this.reconnectCounter = (this.reconnectCounter || 0) + 1;
         this.clientConnect();
-      }, 2000);
+      }, 2000 * (this.reconnectCounter || 1));
     }
   }
 
