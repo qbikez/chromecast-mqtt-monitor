@@ -1,6 +1,6 @@
 {
   "name": "chromecast-mqtt-monitor",
-  "version": "3.0.0-beta-4",
+  "version": "3.0.0-beta-5",
   "description": "Monitors one or more Chromecasts and publishes activity to MQTT, also allows for play/pause/stop/volume control",
   "main": "dist/main.js",
   "scripts": {
