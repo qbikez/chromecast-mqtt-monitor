@@ -8,7 +8,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
+      - run: sudo apt-get install libavahi-compat-libdnssd-dev
       - run: npm ci
+      - run: npm run build
       # - run: npm test
       - uses: JS-DevTools/npm-publish@v1
         with:
