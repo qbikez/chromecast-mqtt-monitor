@@ -244,7 +244,13 @@ export class Chromecast extends EventEmitter {
   }
 
   private processClientStatus(status: ClientStatus) {
-    this.debug("processClientStatus() - Received client status", status);
+    this.log("processClientStatus() - Received client status", status);
+
+    const { isStandBy, isActiveInput } = status;
+    this.emit("state", {
+      isStandBy,
+      isActiveInput,
+    });
 
     const { applications } = status;
     const currentApplication =

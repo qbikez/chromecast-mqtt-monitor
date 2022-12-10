@@ -40,6 +40,8 @@ declare module "castv2-client" {
       peaking_eqs: [];
     };
     applications: Session[];
+    isActiveInput: boolean;
+    isStandBy: boolean;
   }
 
   interface VolumeStatus {

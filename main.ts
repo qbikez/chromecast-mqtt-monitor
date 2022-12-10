@@ -11,6 +11,7 @@ const EVENT_NAMES = [
   "volumeLevel",
   "volumeMuted",
   "repeatMode",
+  "state",
 ];
 
 interface ServiceConfig {
