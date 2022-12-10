@@ -1,7 +1,7 @@
 // Modified from https://github.com/paolotremadio/homebridge-automation-chromecast/blob/master/index.js
 /// <reference path="./castv2-client.d.ts" />
 
-import mdns from "mdns";
+//import mdns from "mdns";
 import { EventEmitter } from "events";
 import { promisify } from "util";
 import {
@@ -13,13 +13,13 @@ import {
   MediaStatus,
 } from "castv2-client";
 
-const mdnsSequence = [
-  mdns.rst.DNSServiceResolve(),
-  "DNSServiceGetAddrInfo" in mdns.dns_sd
-    ? mdns.rst.DNSServiceGetAddrInfo()
-    : mdns.rst.getaddrinfo({ families: [0] }),
-  mdns.rst.makeAddressesUnique(),
-];
+// const mdnsSequence = [
+//   mdns.rst.DNSServiceResolve(),
+//   "DNSServiceGetAddrInfo" in mdns.dns_sd
+//     ? mdns.rst.DNSServiceGetAddrInfo()
+//     : mdns.rst.getaddrinfo({ families: [0] }),
+//   mdns.rst.makeAddressesUnique(),
+// ];
 
 export class Chromecast extends EventEmitter {
   private chromecastDeviceName: string;
@@ -101,47 +101,48 @@ export class Chromecast extends EventEmitter {
    * Use bonjour to detect Chromecast devices on the network
    */
   private detectChromecast() {
-    const browser = mdns.createBrowser(mdns.tcp("googlecast"), {
-      resolverSequence: mdnsSequence,
-    });
+    // const browser = mdns.createBrowser(mdns.tcp("googlecast"), {
+    //   resolverSequence: mdnsSequence,
+    // });
 
-    browser.on("serviceUp", (device) => {
-      const txt = device.txtRecord;
-      const name = txt.fn;
+    // browser.on("serviceUp", (device) => {
+    //   const txt = device.txtRecord;
+    //   const name = txt.fn;
 
-      if (name.toLowerCase() === this.chromecastDeviceName.toLowerCase()) {
-        this.setDefaultProperties(true, true);
+    //   if (name.toLowerCase() === this.chromecastDeviceName.toLowerCase()) {
+    //     this.setDefaultProperties(true, true);
 
-        const ipAddress = device.addresses[0];
-        const { port } = device;
+    //     const ipAddress = device.addresses[0];
+    //     const { port } = device;
 
-        this.chromecastIp = ipAddress;
-        this.chromecastPort = port;
+    //     this.chromecastIp = ipAddress;
+    //     this.chromecastPort = port;
 
-        // this.deviceType = txt.md || "";
-        // this.deviceId = txt.id;
+    //     // this.deviceType = txt.md || "";
+    //     // this.deviceId = txt.id;
 
-        this.log(
-          `Chromecast found on ${this.chromecastIp}:${this.chromecastPort}`
-        );
+    //     this.log(
+    //       `Chromecast found on ${this.chromecastIp}:${this.chromecastPort}`
+    //     );
 
-        this.clientConnect();
-      }
-    });
+    //     this.clientConnect();
+    //   }
+    // });
 
-    // Restart browser every 30 minutes or so to make sure we are listening to announcements
-    setTimeout(() => {
-      browser.stop();
+    // // Restart browser every 30 minutes or so to make sure we are listening to announcements
+    // setTimeout(() => {
+    //   browser.stop();
 
-      this.clientDisconnect(false);
-      this.debug("detectChromecast() - Restarting mdns browser");
-      this.detectChromecast();
-    }, 30 * 60 * 1000);
+    //   this.clientDisconnect(false);
+    //   this.debug("detectChromecast() - Restarting mdns browser");
+    //   this.detectChromecast();
+    // }, 30 * 60 * 1000);
 
-    this.log(
-      `Searching for Chromecast device named "${this.chromecastDeviceName}"`
-    );
-    browser.start();
+    // this.log(
+    //   `Searching for Chromecast device named "${this.chromecastDeviceName}"`
+    // );
+    // browser.start();
+    throw "mdns disabled!";
   }
 
   private clientError(error: Error) {
