@@ -24,7 +24,6 @@
   "homepage": "https://github.com/denwilliams/chromecast-mqtt-monitor#readme",
   "dependencies": {
     "castv2-client": "^1.2.0",
-    "mdns": "^2.7.2",
     "mqtt-usvc": "^3.1.0",
     "prom-client": "^14.0.1"
   },
